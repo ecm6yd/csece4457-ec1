@@ -20,6 +20,7 @@ class Jewel:
         body = b''
         file_contents = b''
         response = ''
+        server = 'ecm6yd'
 
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.bind(('0.0.0.0', port))
@@ -105,17 +106,20 @@ class Jewel:
                         elif status_code == '200 OK' and request_fields[0].decode() == "GET" and content_type == 'text/html':
                             response = ('HTTP/1.1 ' + status_code + '\r\n' +
                                         'Content-Type: ' + content_type + '\r\n' +
-                                        'Content-Length: ' + str(file_size) + '\r\n\r\n' +
+                                        'Content-Length: ' + str(file_size) + '\r\n' +
+                                        'Server: ' + server + '\r\n\r\n' +
                                         body)
                         elif status_code == '200 OK' and request_fields[0].decode() == "GET":
                             response = ('HTTP/1.1 ' + status_code + '\r\n' +
                                         'Content-Type: ' + content_type + '\r\n' +
-                                        'Content-Length: ' + str(file_size) + '\r\n\r\n' +
+                                        'Content-Length: ' + str(file_size) + '\r\n' +
+                                        'Server: ' + server + '\r\n\r\n' +
                                         file_contents.decode())
                         elif status_code == '200 OK' and request_fields[0].decode() == "HEAD":
                             response = ('HTTP/1.1 ' + status_code + '\r\n' +
                                         'Content-Type: ' + content_type + '\r\n' +
-                                        'Content-Length: ' + str(file_size) + '\r\n\r\n')
+                                        'Content-Length: ' + str(file_size) + '\r\n' +
+                                        'Server: ' + server + '\r\n\r\n')
 
                     i.send(response.encode())
                     readable.remove(i)
