@@ -88,10 +88,14 @@ class Jewel:
                                 content_type = 'text/css'
                             elif request_fields[1].decode()[request_fields[1].find(b'.') + 1:] == "html":
                                 content_type = 'text/html'
+                            elif request_fields[1].decode()[request_fields[1].find(b'.') + 1:] == "txt":
+                                content_type = 'text/txt'
                             elif request_fields[1].decode()[request_fields[1].find(b'.') + 1:] == "png":
                                 content_type = 'image/png'
                             elif request_fields[1].decode()[request_fields[1].find(b'.') + 1:] == "jpeg":
                                 content_type = 'image/jpeg'
+                            elif request_fields[1].decode()[request_fields[1].find(b'.') + 1:] == "jpg":
+                                content_type = 'image/jpg'
                             elif request_fields[1].decode()[request_fields[1].find(b'.') + 1:] == "gif":
                                 content_type = 'image/gif'
                         elif request_fields[1].find(b'.') < 0:
